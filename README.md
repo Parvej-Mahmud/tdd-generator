@@ -17,7 +17,7 @@ A powerful Laravel package that automatically generates comprehensive Test-Drive
 Install the package via Composer:
 
 ```bash
-composer require your-vendor/laravel-tdd-generator --dev
+composer require parvej-mahmud/laravel-tdd-generator --dev
 ```
 
 Publish the configuration file:
@@ -225,4 +225,4 @@ This package is open-sourced software licensed under the [MIT license](LICENSE.m
 
 ## Support
 
-If you encounter any issues or have questions, please [open an issue](https://github.com/your-vendor/laravel-tdd-generator/issues) on GitHub.
+If you encounter any issues or have questions, please [open an issue](https://github.com/parvej-mahmud/laravel-tdd-generator/issues) on GitHub.
