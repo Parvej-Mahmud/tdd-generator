@@ -23,13 +23,13 @@ composer require parvej-mahmud/laravel-tdd-generator --dev
 Publish the configuration file:
 
 ```bash
-php artisan vendor:publish --provider="YourVendor\LaravelTddGenerator\TddGeneratorServiceProvider" --tag="config"
+php artisan vendor:publish --provider="ParvejMahmud\LaravelTddGenerator\TddGeneratorServiceProvider" --tag="config"
 ```
 
 Optionally, publish the stub files for customization:
 
 ```bash
-php artisan vendor:publish --provider="YourVendor\LaravelTddGenerator\TddGeneratorServiceProvider" --tag="stubs"
+php artisan vendor:publish --provider="ParvejMahmud\LaravelTddGenerator\TddGeneratorServiceProvider" --tag="stubs"
 ```
 
 ## Usage
@@ -168,7 +168,7 @@ return [
 You can customize the generated test files by publishing and modifying the stub files:
 
 ```bash
-php artisan vendor:publish --provider="YourVendor\LaravelTddGenerator\TddGeneratorServiceProvider" --tag="stubs"
+php artisan vendor:publish --provider="ParvejMahmud\LaravelTddGenerator\TddGeneratorServiceProvider" --tag="stubs"
 ```
 
 The stub files will be published to `resources/stubs/tdd-generator/` where you can modify them to match your project's coding standards.

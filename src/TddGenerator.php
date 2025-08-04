@@ -1,6 +1,6 @@
 <?php
 
-namespace YourVendor\LaravelTddGenerator;
+namespace ParvejMahmud\LaravelTddGenerator;
 
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;

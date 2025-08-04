@@ -22,18 +22,18 @@
     },
     "autoload": {
         "psr-4": {
-            "YourVendor\\LaravelTddGenerator\\": "src/"
+            "ParvejMahmud\\LaravelTddGenerator\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "YourVendor\\LaravelTddGenerator\\Tests\\": "tests/"
+            "ParvejMahmud\\LaravelTddGenerator\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "YourVendor\\LaravelTddGenerator\\TddGeneratorServiceProvider"
+                "ParvejMahmud\\LaravelTddGenerator\\TddGeneratorServiceProvider"
             ]
         }
     },

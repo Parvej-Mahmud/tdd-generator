@@ -1,9 +1,9 @@
 <?php
 
-namespace YourVendor\LaravelTddGenerator\Tests\Feature;
+namespace ParvejMahmud\LaravelTddGenerator\Tests\Feature;
 
 use Orchestra\Testbench\TestCase;
-use YourVendor\LaravelTddGenerator\TddGeneratorServiceProvider;
+use ParvejMahmud\LaravelTddGenerator\TddGeneratorServiceProvider;
 use Illuminate\Filesystem\Filesystem;
 
 class TddGeneratorTest extends TestCase

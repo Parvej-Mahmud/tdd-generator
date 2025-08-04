@@ -1,13 +1,13 @@
 <?php
 
-namespace YourVendor\LaravelTddGenerator;
+namespace ParvejMahmud\LaravelTddGenerator;
 
 use Illuminate\Support\ServiceProvider;
-use YourVendor\LaravelTddGenerator\Commands\GenerateTddCommand;
-use YourVendor\LaravelTddGenerator\Commands\GenerateModelTestCommand;
-use YourVendor\LaravelTddGenerator\Commands\GenerateControllerTestCommand;
-use YourVendor\LaravelTddGenerator\Commands\GenerateMigrationTestCommand;
-use YourVendor\LaravelTddGenerator\Commands\GenerateRouteTestCommand;
+use ParvejMahmud\LaravelTddGenerator\Commands\GenerateTddCommand;
+use ParvejMahmud\LaravelTddGenerator\Commands\GenerateModelTestCommand;
+use ParvejMahmud\LaravelTddGenerator\Commands\GenerateControllerTestCommand;
+use ParvejMahmud\LaravelTddGenerator\Commands\GenerateMigrationTestCommand;
+use ParvejMahmud\LaravelTddGenerator\Commands\GenerateRouteTestCommand;
 
 class TddGeneratorServiceProvider extends ServiceProvider
 {

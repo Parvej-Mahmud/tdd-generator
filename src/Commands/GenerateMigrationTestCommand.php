@@ -1,9 +1,9 @@
 <?php
 
-namespace YourVendor\LaravelTddGenerator\Commands;
+namespace ParvejMahmud\LaravelTddGenerator\Commands;
 
 use Illuminate\Console\Command;
-use YourVendor\LaravelTddGenerator\TddGenerator;
+use ParvejMahmud\LaravelTddGenerator\TddGenerator;
 
 class GenerateMigrationTestCommand extends Command
 {
