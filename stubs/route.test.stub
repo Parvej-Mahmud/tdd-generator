@@ -1,0 +1,77 @@
+<?php
+
+namespace {{namespace}};
+
+use Tests\TestCase;
+use App\Models\{{ResourceName}};
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
+class {{ResourceName}}RouteTest extends TestCase
+{
+    use RefreshDatabase;
+
+    /** @test */
+    public function it_has_{{route_prefix}}_routes()
+    {
+        $this->assertTrue(Route::has('{{route_prefix}}.index'));
+        $this->assertTrue(Route::has('{{route_prefix}}.show'));
+        $this->assertTrue(Route::has('{{route_prefix}}.store'));
+        $this->assertTrue(Route::has('{{route_prefix}}.update'));
+        $this->assertTrue(Route::has('{{route_prefix}}.destroy'));
+    }
+
+    {{route_tests}}
+
+    /** @test */
+    public function it_generates_correct_urls()
+    {
+        ${{ResourceName}} = {{ResourceName}}::factory()->create();
+
+        $this->assertEquals(
+            url('/{{route_prefix}}'),
+            route('{{route_prefix}}.index')
+        );
+
+        $this->assertEquals(
+            url("/{{route_prefix}}/{${{ResourceName}}->id}"),
+            route('{{route_prefix}}.show', ${{ResourceName}})
+        );
+    }
+
+    /** @test */
+    public function it_accepts_correct_http_methods()
+    {
+        ${{ResourceName}} = {{ResourceName}}::factory()->create();
+
+        // Test GET routes
+        $this->get(route('{{route_prefix}}.index'))->assertStatus(200);
+        $this->get(route('{{route_prefix}}.show', ${{ResourceName}}))->assertStatus(200);
+
+        // Test POST route
+        $data = {{ResourceName}}::factory()->make()->toArray();
+        $this->post(route('{{route_prefix}}.store'), $data)->assertStatus(201);
+
+        // Test PUT route
+        $this->put(route('{{route_prefix}}.update', ${{ResourceName}}), $data)->assertStatus(200);
+
+        // Test DELETE route
+        $this->delete(route('{{route_prefix}}.destroy', ${{ResourceName}}))->assertStatus(204);
+    }
+
+    /** @test */
+    public function it_returns_404_for_invalid_routes()
+    {
+        $response = $this->get('/{{route_prefix}}/invalid-id');
+        $response->assertStatus(404);
+    }
+
+    /** @test */
+    public function it_handles_middleware_correctly()
+    {
+        // Test authentication middleware if applicable
+        // Test rate limiting if applicable
+        // Test other middleware as needed
+        $this->assertTrue(true); // Placeholder
+    }
+}

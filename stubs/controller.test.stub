@@ -1,0 +1,76 @@
+<?php
+
+namespace {{namespace}};
+
+use Tests\TestCase;
+use App\Models\{{ModelName}};
+use App\Http\Controllers\{{ControllerName}};
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+
+class {{ControllerName}}Test extends TestCase
+{
+    use RefreshDatabase, WithFaker;
+
+    protected ${{modelName}};
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->{{modelName}} = {{ModelName}}::factory()->create();
+    }
+
+    {{test_methods}}
+
+    /** @test */
+    public function it_validates_required_fields_on_store()
+    {
+        $response = $this->post(route('{{route_prefix}}.store'), []);
+
+        $response->assertStatus(422);
+        $response->assertJsonValidationErrors(['name']); // Adjust fields as needed
+    }
+
+    /** @test */
+    public function it_validates_required_fields_on_update()
+    {
+        $response = $this->put(route('{{route_prefix}}.update', $this->{{modelName}}), []);
+
+        $response->assertStatus(422);
+        $response->assertJsonValidationErrors(['name']); // Adjust fields as needed
+    }
+
+    /** @test */
+    public function it_returns_404_for_non_existent_{{model_name}}()
+    {
+        $response = $this->get(route('{{route_prefix}}.show', 999));
+
+        $response->assertStatus(404);
+    }
+
+    /** @test */
+    public function it_can_paginate_{{route_prefix}}()
+    {
+        {{ModelName}}::factory()->count(15)->create();
+
+        $response = $this->get(route('{{route_prefix}}.index'));
+
+        $response->assertStatus(200);
+        $response->assertJsonStructure([
+            'data',
+            'links',
+            'meta'
+        ]);
+    }
+
+    /** @test */
+    public function it_can_search_{{route_prefix}}()
+    {
+        ${{modelName}} = {{ModelName}}::factory()->create(['name' => 'Searchable Item']);
+
+        $response = $this->get(route('{{route_prefix}}.index', ['search' => 'Searchable']));
+
+        $response->assertStatus(200);
+        $response->assertJsonFragment(['name' => 'Searchable Item']);
+    }
+}

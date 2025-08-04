@@ -1,0 +1,72 @@
+<?php
+
+namespace {{namespace}};
+
+use Tests\TestCase;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
+class {{ClassName}}MigrationTest extends TestCase
+{
+    use RefreshDatabase;
+
+    /** @test */
+    public function it_creates_{{table_name}}_table()
+    {
+        {{column_tests}}
+    }
+
+    /** @test */
+    public function it_has_correct_column_types()
+    {
+        $columns = Schema::getColumnListing('{{table_name}}');
+        
+        $this->assertContains('id', $columns);
+        $this->assertContains('created_at', $columns);
+        $this->assertContains('updated_at', $columns);
+    }
+
+    /** @test */
+    public function it_has_primary_key()
+    {
+        $this->assertTrue(Schema::hasColumn('{{table_name}}', 'id'));
+        
+        // Test that id is auto-incrementing primary key
+        $keyName = Schema::getConnection()
+            ->getDoctrineSchemaManager()
+            ->listTableDetails('{{table_name}}')
+            ->getPrimaryKey()
+            ->getColumns();
+            
+        $this->assertContains('id', $keyName);
+    }
+
+    /** @test */
+    public function it_has_timestamps()
+    {
+        $this->assertTrue(Schema::hasColumn('{{table_name}}', 'created_at'));
+        $this->assertTrue(Schema::hasColumn('{{table_name}}', 'updated_at'));
+    }
+
+    /** @test */
+    public function it_can_insert_data()
+    {
+        $data = [
+            'name' => 'Test Item',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ];
+
+        \DB::table('{{table_name}}')->insert($data);
+
+        $this->assertDatabaseHas('{{table_name}}', ['name' => 'Test Item']);
+    }
+
+    /** @test */
+    public function it_enforces_constraints()
+    {
+        // Test unique constraints, foreign keys, etc.
+        $this->assertTrue(true); // Placeholder - implement based on your constraints
+    }
+}
