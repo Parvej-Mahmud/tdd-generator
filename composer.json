@@ -1,5 +1,5 @@
 {
-    "name": "your-vendor/laravel-tdd-generator",
+    "name": "parvej-mahmud/laravel-tdd-generator",
     "description": "Automatically generate comprehensive TDD files for Laravel modules including models, controllers, migrations, and routes",
     "type": "library",
     "license": "MIT",
